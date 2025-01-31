@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
 public class testChoping {
 
@@ -36,9 +37,26 @@ public class testChoping {
         inputEmail.sendKeys("jairfabian93@gmail.com");
         WebElement inputPassword = driver.findElement(By.cssSelector("#passwd"));
         inputPassword.sendKeys("123123");
-        WebElement btnSunmit = driver.findElement(By.cssSelector("button[id='SubmitLogin'] span"));
-        btnSunmit.click();
+        WebElement btnSubmit = driver.findElement(By.cssSelector("button[id='SubmitLogin'] span"));
+        btnSubmit.click();
+        WebElement btnShirt = driver.findElement(By.xpath("(//a[@title='T-shirts'][normalize-space()='T-shirts'])[2]"));
+        btnShirt.click();
 
+        // crear accion para Selenium
+        Actions accion = new Actions(driver);
+        WebElement mouseHover = driver.findElement(By.xpath("(//img[@title='Faded Short Sleeve T-shirts'])[1]"));
+        accion.moveToElement(mouseHover).perform();
+
+        WebElement moreDetails = driver.findElement(By.xpath("//span[.='More']"));
+        moreDetails.click();
+
+        WebElement colorDress = driver.findElement(By.cssSelector("#color_14"));
+        colorDress.click();
+
+        // vamos a cambiar de pagina  a Women
+
+        WebElement womenPagen = driver.findElement(By.xpath("(//a[@class='sf-with-ul'][normalize-space()='Women'])[1]"));
+        womenPagen.click();
     }
 
     @After
